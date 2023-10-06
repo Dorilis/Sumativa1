@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora</title>
+</head>
+<body>
+    <h1>Calculadora Simple</h1> 
+    <form method="post">
+        {% csrf_token %}
+        <input type="number" name="num1" required>
+        <select name="operacion" required>
+            <option value="suma" id="suma">Suma</option>
+            <option value="resta" id="resta">Resta</option>
+            <option value="multiplicacion" id="multiplicacion">Multiplicación</option>
+            <option value="division" id="division">División</option>
+        </select>
+        <input type="number" name="num2" required>
+        <input type="submit" value="resultado">
+
+    </form>
+    <script>
+        let operacion ="{{operacion}}";
+        if(operacion == "suma"){
+           document.getElementById("suma").Checked = true;
+        }else if(operacion == "resta"){
+             document.getElementById("resta").checked = true;
+        }else if(operacion == "multiplicacion"){
+            document.getElementById("multiplicacion").checked = true;
+        }else if(operacion == "division"){
+            document.getElementById("division").checked = true;
+        }
+        
+</script>
+    <p>Resultado: {{ resultado }}</p>
+</body>
+</html>
